@@ -1,5 +1,9 @@
 #!/bin/sh
 
+echo "TREADMILL - gorouter stress test"
+echo ""
+echo "GOPATH: ${GOPATH}"
+
 if [ -n "${GOROUTER_DIR+1}" ]; then
   echo "GOROUTER_DIR: ${GOROUTER_DIR}"
 else
@@ -32,7 +36,6 @@ echo $$
 
 echo "Change to gorouter dir"
 cd $GOROUTER_DIR
-echo $GOPATH
 
 echo "Restoring godeps.."
 godep restore ./...
@@ -47,8 +50,8 @@ echo "  sleeping for a few seconds to ensure app routes are registered.."
 sleep 25
 
 echo "Starting load test"
-echo -n "$i ," >> $APPDIR/loadtest.out
-boom -n 10 -c 2 -x http://localhost:8081 http://demo.vcap.me  | grep -E "Requests/sec|responses" | tr -s "\n" "," | cut -f 2 -d ":" >> $APPDIR/loadtest.out
+echo -n "$i ,"
+boom -n 5000 -c 50 -x http://localhost:8081 http://demo.vcap.me
 echo ""
 echo "complete"
 

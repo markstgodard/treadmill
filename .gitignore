@@ -1,4 +1,4 @@
 treadmill
 *_test
-out
+*.out
 *.swp
