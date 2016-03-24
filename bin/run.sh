@@ -1,5 +1,6 @@
 #!/bin/sh
 
+echo ""
 echo "TREADMILL - gorouter stress test"
 echo ""
 echo "GOPATH: ${GOPATH}"
@@ -9,6 +10,20 @@ if [ -n "${GOROUTER_DIR+1}" ]; then
 else
   echo "GOROUTER_DIR env varirable is not defined"
   exit 1;
+fi
+
+if [ -n "${TOTAL_REQUESTS+1}" ]; then
+  echo "TOTAL_REQUESTS: ${TOTAL_REQUESTS}"
+else
+  echo "TOTAL_REQUESTS env varirable is not set, defaulting to 10,000"
+  TOTAL_REQUESTS=10000
+fi
+
+if [ -n "${TOTAL_CONCURENT+1}" ]; then
+  echo "TOTAL_CONCURRENT: ${TOTAL_CONCURRENT}"
+else
+  echo "TOTAL_CONCURRENT env varirable is not set, defaulting to 50"
+  TOTAL_CONCURRENT=50
 fi
 
 APPDIR=$PWD
@@ -49,7 +64,7 @@ echo "  sleeping for a few seconds to ensure app routes are registered.."
 sleep 25
 
 echo "Starting load test"
-boom -n 5000 -c 50 -x http://localhost:8081 http://demo.vcap.me
+boom -n $TOTAL_REQUESTS -c $TOTAL_CONCURRENT -x http://localhost:8081 http://demo.vcap.me
 echo ""
 echo "complete"
 
