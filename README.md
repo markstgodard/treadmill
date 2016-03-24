@@ -9,8 +9,8 @@ The purpose is to run a short stress test and capture how many requests / second
 This small load test uses:
 
 - [gorouter](https://github.com/cloudfoundry/gorouter) (duh)
-- [gnatsd](https://github.com/nats-io/gnatsd)
-- [nats](https://rubygems.org/gems/nats) (ruby)
+- [gnatsd](https://github.com/nats-io/gnatsd) (nats server)
+- [nats](https://rubygems.org/gems/nats) (nats client for registering routes)
 - a sample golang app
 - [boom](https://github.com/rakyll/boom)
 - [a little love](http://giphy.com/gifs/ping-pong-cat-table-tennis-sz3pnTuOYyupa/fullscreen)
