@@ -19,6 +19,7 @@ This small load test uses:
 
     $ bin/run.sh <path to gorouter source> [total # requests] [# concurrent]
 
+For example: 1000 requests / 50 concurrent
 
     $ bin/run.sh ~/workspace/cf-release/src/github.com/cloudfoundry/gorouter 1000 50
 
