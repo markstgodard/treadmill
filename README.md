@@ -15,13 +15,11 @@ This small load test uses:
 - [boom](https://github.com/rakyll/boom)
 - [a little love](http://giphy.com/gifs/ping-pong-cat-table-tennis-sz3pnTuOYyupa/fullscreen)
 
-## Configuration
-    export GOROUTER_DIR=<path to gorouter source>
-    export TOTAL_REQUESTS=10000
-    export TOTAL_CONCURRENT=50
+## Usage:
 
-## Running
+    $ bin/run.sh <path to gorouter source> [total # requests] [# concurrent]
 
-    $ bin/run.sh
+
+    $ bin/run.sh ~/workspace/cf-release/src/github.com/cloudfoundry/gorouter 1000 50
 
 

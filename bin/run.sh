@@ -1,9 +1,17 @@
 #!/bin/sh
 
-echo ""
-echo "TREADMILL - gorouter stress test"
-echo ""
+echo "\nTREADMILL - gorouter stress test\n"
+
+if [ "$#" -ne 3 ]; then
+    echo "Usage: <path to gorouter source> [total # requests] [# concurrent]\n"
+    exit 1;
+fi
+
 echo "GOPATH: ${GOPATH}"
+
+GOROUTER_DIR=$1
+TOTAL_REQUESTS=$2
+TOTAL_CONCURRENT=$3
 
 if [ -n "${GOROUTER_DIR+1}" ]; then
   echo "GOROUTER_DIR: ${GOROUTER_DIR}"
@@ -15,15 +23,15 @@ fi
 if [ -n "${TOTAL_REQUESTS+1}" ]; then
   echo "TOTAL_REQUESTS: ${TOTAL_REQUESTS}"
 else
-  echo "TOTAL_REQUESTS env varirable is not set, defaulting to 10,000"
-  TOTAL_REQUESTS=10000
+  echo "TOTAL_REQUESTS env varirable is not defined"
+  exit 1;
 fi
 
-if [ -n "${TOTAL_CONCURENT+1}" ]; then
+if [ -n "${TOTAL_CONCURRENT+1}" ]; then
   echo "TOTAL_CONCURRENT: ${TOTAL_CONCURRENT}"
 else
-  echo "TOTAL_CONCURRENT env varirable is not set, defaulting to 50"
-  TOTAL_CONCURRENT=50
+  echo "TOTAL_CONCURRENT env varirable is not defined"
+  exit 1;
 fi
 
 APPDIR=$PWD
