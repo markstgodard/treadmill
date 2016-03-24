@@ -32,7 +32,6 @@ bin/apps.sh
 
 echo "Starting registrar.."
 bin/registrar.sh &
-echo $$
 
 echo "Change to gorouter dir"
 cd $GOROUTER_DIR
