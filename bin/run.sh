@@ -49,7 +49,6 @@ echo "  sleeping for a few seconds to ensure app routes are registered.."
 sleep 25
 
 echo "Starting load test"
-echo -n "$i ,"
 boom -n 5000 -c 50 -x http://localhost:8081 http://demo.vcap.me
 echo ""
 echo "complete"
