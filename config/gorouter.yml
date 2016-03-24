@@ -1,0 +1,16 @@
+port: 8081
+
+logging:
+  file: gorouter.log
+
+nats:
+  - host: localhost
+    port: 4222
+    user: nats
+    password: "nats"
+
+oauth:
+  token_endpoint: uaa.bosh-lite.com
+  client_name: get
+  client_secret: reckt
+  port: 8888
